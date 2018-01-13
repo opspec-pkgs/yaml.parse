@@ -1,0 +1,19 @@
+name: github.com/opspec-pkgs/yaml.parse
+description: parses [yaml](http://yaml.org/)
+inputs:
+  yaml:
+    string:
+      description: the yaml to parse
+outputs:
+  result:
+    object:
+      description: the parsed yaml
+version: 1.0.0
+run:
+  container:
+    image: { ref: 'opspecpkgs/yaml.parse:1.0.0' }
+    cmd: [node, /cmd.js]
+    files:
+      /cmd.js:
+      /result: $(result)
+      /yaml: $(yaml)
