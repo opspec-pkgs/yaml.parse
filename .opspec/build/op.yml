@@ -14,12 +14,18 @@ outputs:
       description: tar of the built image
 run:
   serial:
+     - op:
+         pkg: { ref: test }
+         inputs: { pkg }
+     - op:
+         pkg: { ref: github.com/opspec-pkgs/docker.image.build#2.0.0 }
+         inputs:
+           dockerfile: $(/Dockerfile)
+           imageName: 'opspecpkgs/yaml.parse:$(version)'
+         outputs: { imageTar }
     - op:
-        pkg: { ref: test }
-        inputs: { pkg }
-    - op:
-        pkg: { ref: github.com/opspec-pkgs/docker.image.build#2.0.0 }
+        pkg: { ref: github.com/opspec-pkgs/_.pkg.generate-readme#1.0.0 }
         inputs:
-          dockerfile: $(/Dockerfile)
-          imageName: 'opspecpkgs/yaml.parse:$(version)'
-        outputs: { imageTar }
+          srcDir: $(pkg)
+        outputs:
+          srcDir: $(pkg)
