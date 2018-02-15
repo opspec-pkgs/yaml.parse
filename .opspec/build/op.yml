@@ -23,9 +23,9 @@ run:
            dockerfile: $(/Dockerfile)
            imageName: 'opspecpkgs/yaml.parse:$(version)'
          outputs: { imageTar }
-    - op:
-        pkg: { ref: github.com/opspec-pkgs/_.pkg.generate-readme#1.0.0 }
-        inputs:
-          srcDir: $(pkg)
-        outputs:
-          srcDir: $(pkg)
+     - op:
+         pkg: { ref: github.com/opspec-pkgs/_.pkg.generate-readme#1.0.1 }
+         inputs:
+           srcDir: $(pkg)
+         outputs:
+           srcDir: $(pkg)
